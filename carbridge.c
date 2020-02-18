@@ -50,3 +50,27 @@ void acquireing_lock_south()
 {
     operatingbridge.llk.lka = 1;
 }
+void south_empty_wait(){
+
+    unsigned int loopvo;
+    for(loopvo = 0; loopvo < sx; loopvo++)
+    {
+        printf("\tSouth Car %d Process gets executed::::: \n",soutwait[loopvo]);
+    }
+    puts("");
+    sx = 0;
+
+}
+//North empyty wait
+void north_empty_wait(){
+
+    unsigned int loopvo;
+    for(loopvo = 0; loopvo < nx; loopvo++)
+    {
+        printf("\tNorth Car %d Process gets executed::::: \n",northwait[loopvo]);
+    }
+    puts("");
+    nx = 0;
+
+}
+
