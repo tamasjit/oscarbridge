@@ -73,4 +73,69 @@ void north_empty_wait(){
     nx = 0;
 
 }
+//check
+
+
+void bridge_arrive_south(unsigned int call_ver_t)
+{
+    if(operatingbridge.llk.lka == 0 || operatingbridge.llk.lka == 1)
+            {
+                printf("\tSouth Car %d process gets executed:::::\n",call_ver_t);
+                acquireing_lock_south();
+            }
+            else
+            {
+                printf("\tSouth Car %d process goes to waiting.....\n",call_ver_t);
+                soutwait[sx] = call_ver_t;
+                sx++; 
+                if(sx >= 5)
+                {
+                    acquireing_lock_south();
+                    south_empty_wait();
+                }
+            }
+}
+void bridge_arrive_north(unsigned int call_ver_o)
+{
+    if(operatingbridge.llk.lka == 0 || operatingbridge.llk.lka == 2)
+            {
+                printf("\tNorth Car %d process gets executed:::::\n",call_ver_o);
+                acquireing_lock_north();
+            }
+            else
+            {
+                printf("\tNouth Car %d process goes to waiting.....\n",call_ver_o);
+                northwait[nx] = call_ver_o;
+                nx++;
+                if(nx >= 5)//“five car rule” test case
+                {
+                    acquireing_lock_north();
+                    north_empty_wait();
+                }
+            }
+}
+
+unsigned int partition(unsigned int a[], unsigned int low, unsigned int high);
+
+unsigned int partition (unsigned int a[], unsigned int low, unsigned int high)
+{
+    unsigned int pivot = a[high];  
+    unsigned int i = (low-1);  
+    unsigned int j;
+    for ( j = low; j <= high-1; j++)
+    {
+
+        if (a[j] <= pivot)
+        {
+            i++;   
+            unsigned int t = a[i];
+            a[i] = a[j];
+            a[j] = t;
+        }
+    }
+    unsigned int t = a[i + 1];
+    a[i+1] = a[high];
+    a[high] = t;
+    return (i + 1);
+}
 
