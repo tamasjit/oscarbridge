@@ -138,4 +138,54 @@ unsigned int partition (unsigned int a[], unsigned int low, unsigned int high)
     a[high] = t;
     return (i + 1);
 }
+void sort_arival(unsigned int a[], unsigned int low, unsigned int high)
 
+{
+	if (low < high)
+    {
+    	
+        unsigned int pi=partition(a, low, high);
+	    sort_arival(a, low, pi - 1);  
+        sort_arival(a, pi + 1, high); 
+    }
+}
+unsigned int south_cars, north_cars;
+unsigned int main()
+{
+	unsigned int mainver;
+    
+    printf("~~~~~~~~~~~Let all the cars are inputed according ascending order arrival time~~~~~~~~~~~\n\n");
+
+
+    printf("\tNumber of total north car:\t");
+    scanf("%d",&north_cars);
+    unsigned int north_arival[north_cars];
+    for( mainver = 0; mainver < north_cars; mainver++)
+    {
+    	printf("\tTime of north arrival of the car %d:\t",mainver+1);
+    	scanf("%d",&north_arival[mainver]);
+	}
+	
+	printf("\tNumber of total south car:\t");
+    scanf("%d",&south_cars);
+    unsigned int south_arival[south_cars];
+    for( mainver = 0; mainver < south_cars; mainver++)
+    {
+    	printf("\tTime of south arrival of the car %d:\t",mainver+1);
+    	scanf("%d",&south_arival[mainver]);
+
+	}
+
+    printf("~~~~~~~~~~Cars of North~~~~~~~~~~\n");
+    printf("\tNo.\tArrival\tLeave\n");
+    for(mainver = 0; mainver < north_cars; mainver++)
+    {
+        printf("\t%d\t%d\n",mainver,north_arival[mainver]);
+    }
+
+    printf("~~~~~~~~~~Cars of South~~~~~~~~~~\n");
+    printf("\tNo.\tArrival\tLeave\n");
+    for(mainver = 0; mainver < south_cars; mainver++)
+    {
+        printf("\t%d\t%d\n",mainver,south_arival[mainver]);
+    }
