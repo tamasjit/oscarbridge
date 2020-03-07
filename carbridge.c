@@ -189,3 +189,48 @@ unsigned int main()
     {
         printf("\t%d\t%d\n",mainver,south_arival[mainver]);
     }
+    printf("~~~~~~~~~~~Start Whole System Processing and Execution~~~~~~~~~~~\n\n");
+    // Input SetUp done; 
+    bridge_init(operatingbridge);
+    
+    mainver = 0;
+    unsigned int call_ver_o = 0;
+    unsigned int call_ver_t = 0;
+    do{
+        if(north_arival[call_ver_o] <= south_arival[call_ver_t])
+        {
+            bridge_arrive_north(call_ver_o);
+            call_ver_o++;
+            
+        }
+        else
+        {
+            bridge_arrive_south(call_ver_t);
+            call_ver_t++; 
+        }
+    }
+    while(call_ver_o < north_cars && call_ver_t < south_cars);
+
+
+    south_empty_wait();
+    north_empty_wait();
+    if(call_ver_o == north_cars)
+    {
+        for(call_ver_t; call_ver_t <south_cars; call_ver_t++)
+        {
+            printf("\tSouth Car %d process gets executed:::::\n",call_ver_t);
+        }
+    }
+    else
+    {
+        for(call_ver_o; call_ver_o <north_cars; call_ver_o++)
+        {
+            
+            printf("\tNorth Car %d process gets executed:::::\n",call_ver_o);
+        }
+    }
+    
+
+
+}
+
