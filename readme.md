@@ -9,9 +9,11 @@ Problem: (Q11)You have been hired by Coltrans Limited to automate the flow of tr
 You must implement the traffic flow mechanism in C by defining a structure struct bridge, plus five functions described below.
 When a northbound car arrives at the bridge, it invokes the function:
 bridge_arrive_north(struct bridge *b)
-This function must not return until it is safe for the car to cross the bridge, according to the rules above. Once a northbound car has finished crossing the bridge it will invoke the function: bridge_leave_north(struct bridge *b)
+This function must not return until it is safe for the car to cross the bridge, according to the rules above. Once a northbound car has finished crossing the bridge it will invoke the function: 
+bridge_leave_north(struct bridge *b)
 Southbound cars will invoke analogous functionsbridge_arrive_southand bridge_leave_south. Use the next pages to write a declaration forstruct bridge and the four functions above, plus the functionbridge_init, which will be invoked to initialize the bridge
-You must write your solution in C using the functions for locks and condition variables: lock_init (struct lock *lock)
+You must write your solution in C using the functions for locks and condition variables: 
+lock_init (struct lock *lock)
 lock_acquire(struct lock *lock)
 lock_release(struct lock *lock)
 cond_init(struct condition *cond)
